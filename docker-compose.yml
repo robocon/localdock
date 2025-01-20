@@ -1,7 +1,7 @@
 version: '3.8'
 services:
     web:
-        container_name: php53
+        container_name: "php53"
         build:
             context: ./php53
             dockerfile: Dockerfile
@@ -13,10 +13,10 @@ services:
         volumes:
             - /d/docker/www:/var/www/html
     web2:
-        container_name: php82
+        container_name: "php82"
         build:
-        context: ./php82
-        dockerfile: Dockerfile
+            context: ./php82
+            dockerfile: Dockerfile
         depends_on:
             - db
         volumes:
