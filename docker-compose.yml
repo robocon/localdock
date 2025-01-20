@@ -4,30 +4,26 @@ services:
         container_name: "php53"
         build:
             context: ./php53
-            dockerfile: Dockerfile
         ports:
-            - "8053:80"
-        restart: always
+            - '8053:80'
         depends_on:
           - db
-        volumes:
-            - /mnt/d/docker/www:/usr/local/apache2/htdocs/
+        # volumes:
+        #     - /mnt/d/docker/www:/usr/local/apache2/htdocs/
     web2:
         container_name: "php82"
         build:
             context: ./php82
-            dockerfile: Dockerfile
+        ports:
+            - '8080:80'
         depends_on:
             - db
-        volumes:
-            - /mnt/d/docker/www:/var/www/html/
-        ports:
-            - "8080:80"
+        # volumes:
+        #     - /mnt/d/docker/www:/var/www/html/
     db:
         container_name: mysql5744
         image: mysql:5.7.44
-        restart: always
-        command: [--default-authentication-plugin=mysql_native_password]
+        # command: [--default-authentication-plugin=mysql_native_password]
         environment:
             MYSQL_ROOT_PASSWORD: example
             # MYSQL_ROOT_PASSWORD: 12345678
@@ -35,7 +31,7 @@ services:
             # MYSQL_USER: mydbuser
             # MYSQL_PASSWORD: 12345678
         ports: 
-            - "3306:3306"
+            - '3306:3306'
     #     volumes:
     #         - mysql_data_test:/var/lib/mysql/
     # volumes:
