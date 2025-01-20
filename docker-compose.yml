@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+    web:
+        container_name: php53
+        build:
+            context: ./php53
+            dockerfile: Dockerfile
+        ports:
+            - "8053:80"
+        restart: always
+        depends_on:
+          - db
+        volumes:
+            - /d/docker/www:/var/www/html
+    web2:
+        container_name: php82
+        build:
+        context: ./php82
+        dockerfile: Dockerfile
+        depends_on:
+            - db
+        volumes:
+            - /mnt/d/docker/www:/var/www/html/
+        ports:
+            - 8080:80
+    db:
+        image: mysql:5.7.44
+        container_name: db
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: 1234
+            MYSQL_DATABASE: smdb
+            MYSQL_USER: root
+            MYSQL_PASSWORD: 1234
+        ports: 
+            - "3306:3306"
+        volumes:
+            - /d/docker/mysql/data:/var/lib/mysql
+            - /d/docker/mysql/log:/var/log/mysql
