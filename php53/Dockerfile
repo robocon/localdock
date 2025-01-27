@@ -2,7 +2,7 @@ FROM httpd:2.2
 COPY ./sources.list /etc/apt/sources.list
 RUN apt-get update 
 RUN apt-get install debian-archive-keyring
-RUN apt-get update && apt-get install -y --force-yes debian-archive-keyring mysql-client libmysqlclient-dev gcc libxml2-dev make curl vim
+RUN apt-get update && apt-get install -y --force-yes debian-archive-keyring mysql-client libmysqlclient-dev gcc libxml2-dev make curl vim build-essential procps file git
 
 COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
 

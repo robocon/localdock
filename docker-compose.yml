@@ -15,6 +15,7 @@ services:
             context: ./php82
         ports:
             - "8080:80"
+            - "443:443"
         depends_on:
             - db
         volumes:
