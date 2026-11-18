@@ -9,6 +9,9 @@ services:
           - db
         volumes:
             - "/mnt/d/docker/www:/usr/local/apache2/htdocs/"
+            # - /var/www/html:/usr/local/apache2/htdocs/
+        networks:
+            - dev-network
     web:
         container_name: "php53"
         build:
@@ -19,10 +22,13 @@ services:
           - db
         volumes:
             - "/mnt/d/docker/www:/usr/local/apache2/htdocs/"
+            # - /var/www/html:/usr/local/apache2/htdocs/
+        networks:
+            - dev-network
     web2:
-        container_name: "php82"
+        container_name: "php8512"
         build:
-            context: ./php82
+            context: ./php8512
         ports:
             - "8080:80"
             - "443:443"
@@ -30,6 +36,9 @@ services:
             - db
         volumes:
             - "/mnt/d/docker/www:/var/www/html/"
+            # - /var/www/html:/var/www/html/
+        networks:
+            - dev-network
     db:
         container_name: mysql5562
         image: mysql:5.5.62
@@ -45,5 +54,11 @@ services:
         restart: always
         volumes:
             - /mnt/d/docker/mysql:/var/lib/mysql/
+            # - /var/lib/mysql/:/var/lib/mysql
+        networks:
+            - dev-network
 volumes:
     mysql_data:
+networks:
+  dev-network:
+    driver: bridge
