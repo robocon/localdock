@@ -89,7 +89,7 @@ RUN mkdir /php && \
         --enable-calendar \
         --with-curl \
         --with-curlwrappers \
-        --disable-dbase \
+        --enable-dbase \
         --enable-exif \
         --without-fbsql \
         --without-fdftk \
@@ -279,6 +279,18 @@ RUN mkdir /php && \
     tar xzf ZendOptimizer-3.3.3-linux-glibc23-x86_64.tar.gz && \
     mkdir /usr/lib/php5.2/modules && \
     cp ZendOptimizer-3.3.3-linux-glibc23-x86_64/data/5_2_x_comp/ZendOptimizer.so /usr/lib/php5.2/modules/ && \
+
+    cd /php && \
+    wget http://pecl.php.net/get/dbase-5.0.1.tgz && \
+    tar xzf dbase-5.0.1.tgz && \
+    cd dbase-5.0.1 && \
+    phpize && \
+    ./configure \
+    && \
+    make clean && \
+    make && \
+    make install && \
+    
 
     # Clean up
     rm -Rf /php && \
