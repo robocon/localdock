@@ -22,6 +22,7 @@ RUN apt-get update && \
     rm /etc/apache2/sites-enabled/000-default
 
 COPY 000-project.conf /etc/apache2/sites-enabled/
+COPY httpd.conf /etc/apache2/httpd.conf
 
 # Download an build PHP 5.2.17
 # See https://askubuntu.com/questions/597462/how-to-install-php-5-2-x-on-ubuntu-14-04
