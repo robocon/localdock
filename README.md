@@ -17,6 +17,7 @@
 
 ## แนวทาง
 wsl เข้าไปในก่อนแล้วค่อย clone ตัวนี้ลงไป
+<img width="880" height="770" alt="image" src="https://github.com/user-attachments/assets/e365a327-a2e6-49da-bffd-4bb1cf6cc389" />
 
 ## License
 
